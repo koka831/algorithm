@@ -1,0 +1,7 @@
+[package]
+name = "abc098"
+version = "0.1.0"
+authors = ["koka <koka.code@gmail.com>"]
+autobins = true
+
+[dependencies]

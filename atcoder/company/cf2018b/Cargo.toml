@@ -1,0 +1,6 @@
+[package]
+name = "cf2018b"
+version = "0.1.0"
+authors = ["koka <koka.code@gmail.com>"]
+
+[dependencies]

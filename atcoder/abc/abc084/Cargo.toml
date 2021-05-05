@@ -1,0 +1,22 @@
+[package]
+name = "abc084"
+version = "0.1.0"
+authors = ["koka <koka.code@gmail.com>"]
+
+[dependencies]
+
+[[bin]]
+path = 'src/a.rs'
+name = 'a'
+
+[[bin]]
+path = 'src/b.rs'
+name = 'b'
+
+[[bin]]
+path = 'src/c.rs'
+name = 'c'
+
+[[bin]]
+path = 'src/d.rs'
+name = 'd'

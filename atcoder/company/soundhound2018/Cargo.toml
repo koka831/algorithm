@@ -1,0 +1,6 @@
+[package]
+name = "soundhound2018"
+version = "0.1.0"
+authors = ["koka <koka.code@gmail.com>"]
+autobins = true
+[dependencies]

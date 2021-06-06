@@ -1,4 +1,3 @@
-use std::ops;
 use cargo_snippet::snippet;
 
 #[snippet("ModInt")]
@@ -8,6 +7,7 @@ pub struct ModInt {
     modulo: usize,
 }
 
+#[snippet("ModInt")]
 impl ModInt {
     fn new(v: usize, modulo: usize) -> Self {
         ModInt { v, modulo }
@@ -30,13 +30,15 @@ impl ModInt {
     }
 }
 
+#[snippet("ModInt")]
 impl PartialEq for ModInt {
     fn eq(&self, other: &Self) -> bool {
         self.v == other.v
     }
 }
 
-impl ops::Add for ModInt {
+#[snippet("ModInt")]
+impl std::ops::Add for ModInt {
     type Output = Self;
 
     #[inline]
@@ -48,14 +50,16 @@ impl ops::Add for ModInt {
     }
 }
 
-impl ops::AddAssign for ModInt {
+#[snippet("ModInt")]
+impl std::ops::AddAssign for ModInt {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        *self = *self + rhs.v;
+        *self = *self + rhs;
     }
 }
 
-impl ops::Sub for ModInt {
+#[snippet("ModInt")]
+impl std::ops::Sub for ModInt {
     type Output = Self;
 
     #[inline]
@@ -67,14 +71,16 @@ impl ops::Sub for ModInt {
     }
 }
 
-impl ops::SubAssign for ModInt {
+#[snippet("ModInt")]
+impl std::ops::SubAssign for ModInt {
     #[inline]
     fn sub_assign(&mut self, rhs: Self) {
-        *self = *self - rhs.v;
+        *self = *self - rhs;
     }
 }
 
-impl ops::Mul for ModInt {
+#[snippet("ModInt")]
+impl std::ops::Mul for ModInt {
     type Output = Self;
 
     #[inline]
@@ -86,14 +92,16 @@ impl ops::Mul for ModInt {
     }
 }
 
-impl ops::MulAssign for ModInt {
+#[snippet("ModInt")]
+impl std::ops::MulAssign for ModInt {
     #[inline]
     fn mul_assign(&mut self, rhs: Self) {
-        *self = *self * rhs.v;
+        *self = *self * rhs;
     }
 }
 
-impl ops::Div for ModInt {
+#[snippet("ModInt")]
+impl std::ops::Div for ModInt {
     type Output = Self;
 
     #[inline]
@@ -105,12 +113,14 @@ impl ops::Div for ModInt {
     }
 }
 
-impl ops::DivAssign for ModInt {
+#[snippet("ModInt")]
+impl std::ops::DivAssign for ModInt {
     fn div_assign(&mut self, rhs: Self) {
-        *self = *self / rhs.v;
+        *self = *self / rhs;
     }
 }
 
+#[snippet("ModInt")]
 macro_rules! modint_impl {
     ($t:tt) => {
         impl PartialEq<$t> for ModInt {
@@ -119,7 +129,7 @@ macro_rules! modint_impl {
             }
         }
 
-        impl ops::Add<$t> for ModInt {
+        impl std::ops::Add<$t> for ModInt {
             type Output = Self;
 
             #[inline]
@@ -131,14 +141,14 @@ macro_rules! modint_impl {
             }
         }
 
-        impl ops::AddAssign<$t> for ModInt {
+        impl std::ops::AddAssign<$t> for ModInt {
             #[inline]
             fn add_assign(&mut self, rhs: $t) {
                 self.v = self.v + rhs;
             }
         }
 
-        impl ops::Sub<$t> for ModInt {
+        impl std::ops::Sub<$t> for ModInt {
             type Output = Self;
 
             #[inline]
@@ -150,14 +160,14 @@ macro_rules! modint_impl {
             }
         }
 
-        impl ops::SubAssign<$t> for ModInt {
+        impl std::ops::SubAssign<$t> for ModInt {
             #[inline]
             fn sub_assign(&mut self, rhs: $t) {
                 self.v = self.v - rhs;
             }
         }
 
-        impl ops::Mul<$t> for ModInt {
+        impl std::ops::Mul<$t> for ModInt {
             type Output = Self;
 
             #[inline]
@@ -169,13 +179,13 @@ macro_rules! modint_impl {
             }
         }
 
-        impl ops::MulAssign<$t> for ModInt {
+        impl std::ops::MulAssign<$t> for ModInt {
             #[inline]
             fn mul_assign(&mut self, rhs: $t) {
                 self.v = self.v * rhs;
             }
         }
-        impl ops::Div<$t> for ModInt {
+        impl std::ops::Div<$t> for ModInt {
             type Output = Self;
 
             #[inline]
@@ -188,7 +198,7 @@ macro_rules! modint_impl {
             }
         }
 
-        impl ops::DivAssign<$t> for ModInt {
+        impl std::ops::DivAssign<$t> for ModInt {
             fn div_assign(&mut self, rhs: $t) {
                 self.v = self.v / rhs;
             }
@@ -197,6 +207,7 @@ macro_rules! modint_impl {
 }
 
 // todo apply it for isize
+#[snippet("ModInt")]
 modint_impl!(usize);
 
 #[cfg(test)]

@@ -51,7 +51,7 @@ impl ops::Add for ModInt {
 impl ops::AddAssign for ModInt {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.v = self.v + rhs.v;
+        *self = *self + rhs.v;
     }
 }
 
@@ -70,7 +70,7 @@ impl ops::Sub for ModInt {
 impl ops::SubAssign for ModInt {
     #[inline]
     fn sub_assign(&mut self, rhs: Self) {
-        self.v = self.v - rhs.v;
+        *self = *self - rhs.v;
     }
 }
 
@@ -89,7 +89,7 @@ impl ops::Mul for ModInt {
 impl ops::MulAssign for ModInt {
     #[inline]
     fn mul_assign(&mut self, rhs: Self) {
-        self.v = self.v * rhs.v;
+        *self = *self * rhs.v;
     }
 }
 
@@ -107,7 +107,7 @@ impl ops::Div for ModInt {
 
 impl ops::DivAssign for ModInt {
     fn div_assign(&mut self, rhs: Self) {
-        self.v = self.v / rhs.v;
+        *self = *self / rhs.v;
     }
 }
 

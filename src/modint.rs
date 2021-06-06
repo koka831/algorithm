@@ -15,7 +15,7 @@ impl ModInt {
 
     #[inline]
     fn pow(self, power: usize) -> Self {
-        if power == 0 { return self; }
+        if power == 0 { return ModInt { v: 1, ..self }; }
         if power % 2 == 0 {
             let h = self.pow(power / 2);
             h * h
@@ -214,20 +214,20 @@ modint_impl!(usize);
 mod tests {
     use super::*;
 
+    const MOD: usize = 10usize.pow(9) + 7;
+
     #[test]
     fn test_modint_add_with_modint() {
-        let modulo = 10usize.pow(9) + 7;
-        let mint = ModInt::new(1, modulo);
-        let rhs = ModInt::new(modulo, modulo);
+        let mint = ModInt::new(1, MOD);
+        let rhs = ModInt::new(MOD, MOD);
 
         assert_eq!((mint + rhs).v, 1);
     }
 
     #[test]
     fn test_modint_add_assign_with_modint() {
-        let modulo = 10usize.pow(9) + 7;
-        let mut mint = ModInt::new(1, modulo);
-        let rhs = ModInt::new(modulo, modulo);
+        let mut mint = ModInt::new(1, MOD);
+        let rhs = ModInt::new(MOD, MOD);
 
         mint += rhs;
         assert_eq!(mint.v, 1);
@@ -235,10 +235,16 @@ mod tests {
 
     #[test]
     fn test_modint_add_with_usize() {
-        let modulo = 10usize.pow(9) + 7;
-        let mint = ModInt::new(1, modulo);
-        let rhs = modulo;
+        let mint = ModInt::new(1, MOD);
+        let rhs = MOD;
 
         assert_eq!((mint + rhs).v, 1);
+    }
+
+    #[test]
+    fn test_modint_pow() {
+        let mint = ModInt::new(2, MOD);
+        assert_eq!(mint.pow(2).v, 4);
+        assert_eq!(mint.pow(1000000000).v, 140625001);
     }
 }

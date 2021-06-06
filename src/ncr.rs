@@ -33,9 +33,22 @@ impl Modulo {
         Modulo { fact, inv_fact, modulo }
     }
 
-    pub fn comb(&self, n: usize, r: usize) -> usize {
+    pub fn combination(&self, n: usize, r: usize) -> usize {
         if n < r { return 0; }
         self.fact[n] * self.inv_fact[r] %
             self.modulo * self.inv_fact[n - r] % self.modulo
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const MOD: usize = 10usize.pow(9) + 7;
+
+    #[test]
+    fn test_combination() {
+        let modulo = Modulo::new(1000, MOD);
+        assert_eq!(modulo.combination(1000, 500), 159835829);
     }
 }

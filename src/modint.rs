@@ -144,7 +144,7 @@ macro_rules! modint_impl {
         impl std::ops::AddAssign<$t> for ModInt {
             #[inline]
             fn add_assign(&mut self, rhs: $t) {
-                self.v = self.v + rhs;
+                *self = *self + rhs;
             }
         }
 
@@ -163,7 +163,7 @@ macro_rules! modint_impl {
         impl std::ops::SubAssign<$t> for ModInt {
             #[inline]
             fn sub_assign(&mut self, rhs: $t) {
-                self.v = self.v - rhs;
+                *self = *self - rhs;
             }
         }
 
@@ -182,7 +182,7 @@ macro_rules! modint_impl {
         impl std::ops::MulAssign<$t> for ModInt {
             #[inline]
             fn mul_assign(&mut self, rhs: $t) {
-                self.v = self.v * rhs;
+                *self = *self * rhs;
             }
         }
         impl std::ops::Div<$t> for ModInt {
@@ -200,7 +200,7 @@ macro_rules! modint_impl {
 
         impl std::ops::DivAssign<$t> for ModInt {
             fn div_assign(&mut self, rhs: $t) {
-                self.v = self.v / rhs;
+                *self = *self / rhs;
             }
         }
     }
@@ -211,6 +211,7 @@ macro_rules! modint_impl {
 modint_impl!(usize);
 
 #[cfg(test)]
+/// verify: https://atcoder.jp/contests/abc156/submissions/23260325
 mod tests {
     use super::*;
 
@@ -239,6 +240,13 @@ mod tests {
         let rhs = MOD;
 
         assert_eq!((mint + rhs).v, 1);
+    }
+
+    #[test]
+    fn test_modint_mul_assign_with_usize() {
+        let mut mint = ModInt::new(5, 9);
+        mint *= 5;
+        assert_eq!(mint.v, 25 % 9);
     }
 
     #[test]

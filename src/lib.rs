@@ -56,7 +56,8 @@ fn divide(n: usize) -> Option<usize> {
             return Some(i);
         }
     }
-    return None;
+
+    None
 }
 
 /// returns vec of prime factors of n
@@ -71,7 +72,8 @@ pub fn prime_factor(n: usize) -> Vec<usize> {
         factors.push(f);
     }
     factors.push(x);
-    return factors;
+
+    factors
 }
 
 #[cfg(test)]

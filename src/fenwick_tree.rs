@@ -12,38 +12,36 @@ impl FenwickTree {
     fn new(n: usize) -> Self {
         FenwickTree {
             n,
-            bit: vec![0; n],
+            bit: vec![0; n + 1],
         }
     }
 
     fn from(v: &[usize]) -> Self {
-        let mut bit = Vec::new();
-        bit.extend_from_slice(v);
+        let n = v.len();
+        let mut t = Self::new(n);
+        for i in 0..n { t.add(i, v[i]); }
 
-        FenwickTree {
-            n: v.len(),
-            bit,
-        }
+        t
     }
 
     // returns sum of [0, i)
     fn sum(&self, i: usize) -> usize {
         let mut sum = 0;
-        let mut i = i;
-        while i > 0 {
-            i -= 1;
-            sum += self.bit[i];
-            i &= i + 1;
+        let mut x = i;
+        while x > 0 {
+            x -= 1;
+            sum += self.bit[x];
+            x &= x + 1;
         }
 
         sum
     }
 
     fn add(&mut self, i: usize, v: usize) {
-        let mut i = i;
-        while i < self.n {
-            self.bit[i] += v;
-            i |= i + 1;
+        let mut x = i;
+        while x < self.n {
+            self.bit[x] += v;
+            x |= x + 1;
         }
     }
 }

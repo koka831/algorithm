@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -ue
 
-SNIP_PATH="$HOME/.config/coc/ultisnips/rust/generated.snippets"
-SNIP_TYPE="ultisnips"
+SNIP_PATH="$HOME/.config/nvim/snippets/rust.generated.snippets"
 
 : "update snippet" && {
-    cargo snippet -t "$SNIP_TYPE" >"$SNIP_PATH"
+    cargo snippet >"$SNIP_PATH"
 }

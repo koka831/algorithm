@@ -14,7 +14,6 @@ fn solve(path: &str) -> usize {
 
     for line in lines {
         let line = preproc(line.unwrap());
-        dbg!(&line);
         let first = line.chars().find(char::is_ascii_digit).unwrap();
         let last = line.chars().rfind(char::is_ascii_digit).unwrap();
 

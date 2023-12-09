@@ -1,7 +1,5 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 /// https://adventofcode.com/2023/day/1
 /// Day 1: Trebuchet?!

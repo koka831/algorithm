@@ -1,4 +1,5 @@
-use std::{fs::File, io};
+use std::fs::File;
+use std::io;
 
 /// https://adventofcode.com/2023/day/4
 /// Day 4: Scratchcards

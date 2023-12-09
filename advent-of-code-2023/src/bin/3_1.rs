@@ -1,7 +1,5 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
 
 /// https://adventofcode.com/2023/day/3
 /// Day 3: Gear Ratios

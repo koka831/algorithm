@@ -43,11 +43,7 @@ fn solve(path: &str) -> io::Result<usize> {
         step
     };
 
-    let mut count = 1;
-    for s in start {
-        count = lcm(count, steps(s));
-    }
-
+    let count = start.iter().fold(1, |acc, s| lcm(acc, steps(s)));
     Ok(count)
 }
 
